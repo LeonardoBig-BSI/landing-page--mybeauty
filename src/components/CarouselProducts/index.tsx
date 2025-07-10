@@ -9,7 +9,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import Image from "next/image"
-import ButtonCustom from "../ButtonCustom"
+import { ButtonCustom } from "../ButtonCustom"
 
 const products = [
   {
@@ -62,12 +62,15 @@ export default function CarouselProducts() {
                       <span className="pl-2 font-bold">{currProduct.pricePromotion}</span>
                     </p>
 
-                    <ButtonCustom
-                      type="button"
-                      className="bg-zinc-950 text-zinc-100 hover:bg-zinc-950"
-                    >
-                      Comprar
-                    </ButtonCustom>
+                    <ButtonCustom.Root>
+                      <ButtonCustom.Content
+                        type="button"
+                        className="bg-zinc-950 text-zinc-100 hover:bg-zinc-950"
+                      >
+                        Comprar
+                      </ButtonCustom.Content>
+                    </ButtonCustom.Root>
+                    
                   </div>
                 </CardContent>
               </Card>
@@ -76,7 +79,7 @@ export default function CarouselProducts() {
         ))}
       </CarouselContent>
       <CarouselPrevious className="ml-2 hidden sm:flex" />
-      <CarouselNext className="ml-2 hidden sm:flex"/>
+      <CarouselNext className="ml-2 hidden sm:flex" />
     </Carousel>
   )
 }

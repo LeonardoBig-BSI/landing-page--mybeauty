@@ -6,7 +6,7 @@ interface HeaderRootProps {
 
 export default function HeaderRoot({ children }: HeaderRootProps) {
     return(
-        <header className="relative w-full h-[240px] bg-zinc-950">
+        <header className="relative w-full h-[260px] md:h-[260px] bg-zinc-950">
             {children}
         </header>
     )

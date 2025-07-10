@@ -10,11 +10,25 @@
   outline: none;
 }
 
-body, main {
+html {
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  width: 100%;
+  /* overflow-x: hidden; */
+}
+
+main {
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* body, main {
   max-width: 100vw;
   overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
-}
+} */
 
 
 

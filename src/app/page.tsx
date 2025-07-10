@@ -1,11 +1,15 @@
-import Header from "@/components/Header";
+import { Header } from "@/components/Header";
+import { NavBar } from "@/components/NavBar";
 
 export default function Home() {
   return (
-    <div>
-      <Header />
-      {/* <Header /> */}
-    
+    <>
+      <Header.Root>
+        <Header.Content />
+      </Header.Root>
+
+
+
       {/* <main className="container mb-32">
         <SectionApresentation />
 
@@ -15,6 +19,6 @@ export default function Home() {
       </main>
 
       <Footer /> */}
-    </div>
+    </>
   );
 }

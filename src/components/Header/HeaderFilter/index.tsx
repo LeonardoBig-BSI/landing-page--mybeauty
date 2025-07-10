@@ -5,10 +5,10 @@ export default function HeaderFilter() {
     return (
         <>
             {/* Filtro */}
-            <div className="relative w-[50vw]">
+            <div className="relative w-[80vw] md:w-[50vw]">
                 <Input
                     type="text"
-                    className="w-full h-10 text-lg px-4 py-2 rounded-lg text-center bg-zinc-100 text-zinc-700"
+                    className="w-full h-10 text-base md:text-md lg:text-lg px-4 py-2 rounded-lg text-center bg-zinc-100 text-zinc-700"
                     placeholder="O que você quer para hoje?"
                 />
                 <Search
