@@ -1,55 +1,56 @@
-import Image from "next/image"
-import NavBar from "../NavBar"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
-import { MenuIcon, Search } from "lucide-react"
-import Input from "../Input"
+import { MapPin, Search, ShoppingBag, User } from "lucide-react";
+import Image from "next/image";
+
+import Input from "../Input";
+import NavBar from "../NavBar";
 
 export default function Header() {
-  return (
-    <header className="flex justify-center items-center relative w-full h-[400px] bg-zinc-950">
-      <div className="md:ml-24 absolute top-2 left-5">
-        <Input
-          type="text"
-          className="w-[80vw] md:w-[50vw] h-10 text-lg px-4 py-2 rounded-lg text-center bg-zinc-100 text-zinc-700"
-          placeholder="O que você quer para hoje?"
-        />
-        <Search
-          className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500"
-          size={20}
-        />
-      </div>
+    return (
+        <header className="relative w-full h-[240px] bg-zinc-950">
 
-      {/* Menubar para telas maiores */}
-      <nav className="absolute top-2 right-2 hidden md:block lg:block xl:block">
-        <NavBar />
-      </nav>
+            <div className="flex items-center justify-between gap-2">
+                {/* Logo */}
+                <Image
+                    src="/mybeauty.jpeg"
+                    alt="My Beauty"
+                    width={200}
+                    height={20}
+                    className="ml-8 object-contain"
+                />
 
-      {/* Menu Hamburger para telas pequenas */}
-      <div className="absolute top-2 right-2 block md:hidden lg:hidden xl:hidden">
-        <Sheet>
-          <SheetTrigger asChild>
-            <button className="p-2 text-white">
-              <MenuIcon size={24} />
-            </button>
-          </SheetTrigger>
-          <SheetContent side="right" className="p-4 bg-zinc-950 text-white">
-            <SheetHeader>
-              <SheetTitle>Menu</SheetTitle>
-            </SheetHeader>
+                {/* Filtro */}
+                <div className="relative w-[50vw]">
+                    <Input
+                        type="text"
+                        className="w-full h-10 text-lg px-4 py-2 rounded-lg text-center bg-zinc-100 text-zinc-700"
+                        placeholder="O que você quer para hoje?"
+                    />
+                    <Search
+                        className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-500"
+                        size={20}
+                    />
+                </div>
 
-            {/* NavBar só no mobile */}
-            <NavBar isMobile />
-          </SheetContent>
-        </Sheet>
-      </div>
+                {/* Localização, Login, Sacola */}
+                <div className="flex items-center text-zinc-100 px-6 gap-8">
+                    <button className="flex flex-row items-center hover:text-zinc-300 transition">
+                        <MapPin size={20} />
+                        <span className="pl-2 text-md">Localização</span>
+                    </button>
+                    <button className="flex flex-row items-center hover:text-zinc-300 transition">
+                        <User size={20} />
+                        <span className="pl-2 text-md">Entrar</span>
+                    </button>
+                    <button className="flex flex-row items-center hover:text-zinc-300 transition">
+                        <ShoppingBag size={20} />
+                        <span className="pl-2 text-md">Sacola</span>
+                    </button>
+                </div>
+            </div>
 
-      <Image
-        src="/mybeauty.jpeg"
-        alt="My Beauty"
-        width={400}
-        height={50}
-        className="object-contain"
-      />
-    </header>
-  )
+            <nav className="flex justify-between items-center gap-4 bg-zinc-950">
+                <NavBar />
+            </nav>
+        </header>
+    )
 }

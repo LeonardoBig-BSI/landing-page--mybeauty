@@ -1,190 +1,278 @@
+"use client"
+
+import * as React from "react"
+import Link from "next/link"
+import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react"
 import {
-  Menubar,
-  MenubarCheckboxItem,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarRadioGroup,
-  MenubarRadioItem,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
-  MenubarTrigger,
-} from "@/components/ui/menubar"
+    NavigationMenu,
+    NavigationMenuContent,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+    NavigationMenuTrigger,
+    NavigationMenuViewport,
+    navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
 
-type NavBarProps = {
-  isMobile?: boolean;
-};
+import { fragrances } from "@/data/fragrances"
+import { hair } from "@/data/hair"
+import { body } from "@/data/body"
+import { make } from "@/data/make"
+import { skincare } from "@/data/skincare"
+import { male } from "@/data/male"
+import { gift } from "@/data/gift"
 
-export default function NavBar({ isMobile = false }: NavBarProps) {
-  return (
-    <Menubar className={`${isMobile ? "block" : "hidden md:flex"} 
-                      bg-zinc-950  border border-zinc-950 text-white rounded-none`}>      
-      <MenubarMenu>
-        <MenubarTrigger>Perfumes</MenubarTrigger>
-        <MenubarContent>
-          <MenubarCheckboxItem>Perfumes Femininos</MenubarCheckboxItem>
-          <MenubarCheckboxItem>Perfumes Masculinos</MenubarCheckboxItem>
-          <MenubarCheckboxItem>Perfumes Unissex</MenubarCheckboxItem>
-          <MenubarSeparator />
-          <MenubarItem inset>
-            Kits Presenteáveis
-          </MenubarItem>
-          <MenubarItem inset>
-            Velas e Fragâncias de ambiente
-          </MenubarItem>
-        </MenubarContent>
-      </MenubarMenu>
+export default function NavBar() {
+    return (
+        <div className="relative mx-auto">
+            <NavigationMenu>
+                <NavigationMenuList>
 
-      <MenubarMenu>
-        <MenubarTrigger>Cabelos</MenubarTrigger>
-        <MenubarContent>
-          <MenubarCheckboxItem>Condicionador</MenubarCheckboxItem>
-          <MenubarCheckboxItem>Kits para cabelos</MenubarCheckboxItem>
-          <MenubarCheckboxItem>Shampoo</MenubarCheckboxItem>
-          <MenubarSeparator />
-          <MenubarItem inset>
-            Máscara
-          </MenubarItem>
-          <MenubarItem inset>
-            Modelador
-          </MenubarItem>
-          <MenubarItem inset>
-            Finalizador
-          </MenubarItem>
-        </MenubarContent>
-      </MenubarMenu>
+                    <NavigationMenuItem>
+                        <NavigationMenuTrigger className="bg-zinc-950 text-white">Perfumaria</NavigationMenuTrigger>
+                        <NavigationMenuContent className="absolute left-0 mt-2">
+                            <ul className="grid w-[500px] gap-2 p-4 md:w-[890px] md:h-[380px] md:grid-cols-2 rounded-md shadow-lg">
+                                {fragrances.map((fragCategory) => (
+                                    <ListItem
+                                        key={fragCategory.title}
+                                        title={fragCategory.title}
+                                        href={fragCategory.href}
+                                        className="pl-4"
+                                    >
+                                        {fragCategory.items
+                                            .sort((fragA, fragB) => fragA.name.localeCompare(fragB.name))
+                                            .map((currFrag) => (
+                                                <div key={currFrag.id} className="mt-2">
+                                                    <p className="hover:text-zinc-950 hover:font-bold">
+                                                        {currFrag.name}
+                                                    </p>
+                                                </div>
+                                            ))}
 
-      <MenubarMenu>
-        <MenubarTrigger>Maquiagem</MenubarTrigger>
-        <MenubarContent>
-          <MenubarSub>
-            <MenubarSubTrigger>Face</MenubarSubTrigger>
-            <MenubarSubContent>
-              <MenubarItem>Base</MenubarItem>
-              <MenubarItem>Blush</MenubarItem>
-              <MenubarItem>Bronzer</MenubarItem>
-              <MenubarItem>Corretivo</MenubarItem>
-              <MenubarItem>Pó</MenubarItem>
-            </MenubarSubContent>
-          </MenubarSub>
-          <MenubarSub>
-            <MenubarSubTrigger>Lábios</MenubarSubTrigger>
-            <MenubarSubContent>
-              <MenubarItem>Batons</MenubarItem>
-              <MenubarItem>Gloss</MenubarItem>
-              <MenubarItem>Lápis de boca</MenubarItem>
-              <MenubarItem>Primer labial</MenubarItem>
-            </MenubarSubContent>
-          </MenubarSub>
-          <MenubarSub>
-            <MenubarSubTrigger>Olhos</MenubarSubTrigger>
-            <MenubarSubContent>
-              <MenubarItem>Cílios postiços</MenubarItem>
-              <MenubarItem>Delineadores</MenubarItem>
-              <MenubarItem>Lápis</MenubarItem>
-              <MenubarItem>Sombras</MenubarItem>
-            </MenubarSubContent>
-          </MenubarSub>
-          <MenubarSub>
-            <MenubarSubTrigger>Sobrancelhas</MenubarSubTrigger>
-            <MenubarSubContent>
-              <MenubarItem>Delienadores</MenubarItem>
-              <MenubarItem>Kit sobrancelha</MenubarItem>
-              <MenubarItem>Lápis</MenubarItem>
-              <MenubarItem>Máscaras</MenubarItem>
-            </MenubarSubContent>
-          </MenubarSub>
-          <MenubarSub>
-            <MenubarSubTrigger>Unhas</MenubarSubTrigger>
-            <MenubarSubContent>
-              <MenubarItem>Base</MenubarItem>
-              <MenubarItem>Esmaltes</MenubarItem>
-              <MenubarItem>Fixador</MenubarItem>
-              <MenubarItem>Removedor de esmaltes</MenubarItem>
-              <MenubarItem>Top Coat</MenubarItem>
-            </MenubarSubContent>
-          </MenubarSub>
-          <MenubarSeparator />
-          <MenubarSub>
-            <MenubarSubTrigger>Paletas</MenubarSubTrigger>
-            <MenubarSubContent>
-              <MenubarItem>Paletas de contorno</MenubarItem>
-              <MenubarItem>Paletas de corretivo</MenubarItem>
-              <MenubarItem>Paletas de iluminador</MenubarItem>
-              <MenubarItem>Paletas de sombra</MenubarItem>
-            </MenubarSubContent>
-          </MenubarSub>
-          <MenubarSub>
-            <MenubarSubTrigger>Acessórios</MenubarSubTrigger>
-            <MenubarSubContent>
-              <MenubarItem>Apontadores</MenubarItem>
-              <MenubarItem>Cases</MenubarItem>
-              <MenubarItem>Curvadores de cílios</MenubarItem>
-              <MenubarItem>Esponjas</MenubarItem>
-              <MenubarItem>Kits de pincéis</MenubarItem>
-              <MenubarItem>Pincéis</MenubarItem>
-            </MenubarSubContent>
-          </MenubarSub>
-        </MenubarContent>
-      </MenubarMenu>
+                                        <p className="mt-5 hover:text-zinc-950 hover:font-bold">
+                                            Ver tudo +
+                                        </p>
+                                    </ListItem>
+                                ))}
+                            </ul>
+                        </NavigationMenuContent>
+                    </NavigationMenuItem>
 
-      <MenubarMenu>
-        <MenubarTrigger>Skincare</MenubarTrigger>
-        <MenubarContent>
-          <MenubarSub>
-            <MenubarSubTrigger>Tipos de Pele</MenubarSubTrigger>
-            <MenubarSubContent>
-              <MenubarItem>Pele Normal</MenubarItem>
-              <MenubarItem>Pele Madura</MenubarItem>
-              <MenubarItem>Pele Mista</MenubarItem>
-              <MenubarItem>Pele Oleosa</MenubarItem>
-              <MenubarItem>Pele Seca</MenubarItem>
-              <MenubarItem>Pele Sensível</MenubarItem>
-            </MenubarSubContent>
-          </MenubarSub>
-          <MenubarSub>
-            <MenubarSubTrigger>Olhos & Lábios</MenubarSubTrigger>
-            <MenubarSubContent>
-              <MenubarItem>Cílios</MenubarItem>
-              <MenubarItem>Esfoliantes</MenubarItem>
-              <MenubarItem>Hidratantes</MenubarItem>
-              <MenubarItem>Sobrancelhas</MenubarItem>
-            </MenubarSubContent>
-          </MenubarSub>
-          <MenubarSub>
-            <MenubarSubTrigger>Acessórios</MenubarSubTrigger>
-            <MenubarSubContent>
-              <MenubarItem>Aparelhos de limpeza</MenubarItem>
-              <MenubarItem>Aplicadores</MenubarItem>
-            </MenubarSubContent>
-          </MenubarSub>
-        </MenubarContent>
-      </MenubarMenu>
+                    <NavigationMenuItem>
+                        <NavigationMenuTrigger className="bg-zinc-950 text-white">Cabelos</NavigationMenuTrigger>
+                        <NavigationMenuContent className="absolute left-0 mt-2">
+                            <ul className="flex gap-12 w-[500px] md:w-[890px] md:h-[380px] p-4 rounded-md shadow-lg bg-white">
+                                {hair.map((hairCategory) => (
+                                    <ListItem
+                                        key={hairCategory.title}
+                                        title={hairCategory.title}
+                                        href={hairCategory.href}
+                                        className="!pl-0 !list-none w-[200px]"
+                                    >
+                                        <ul className="space-y-1">
+                                            {hairCategory.items
+                                                .sort((a, b) => a.name.localeCompare(b.name))
+                                                .map((item) => (
+                                                    <li
+                                                        key={item.id}
+                                                        className="text-sm text-muted-foreground hover:text-zinc-900 hover:font-semibold cursor-pointer"
+                                                    >
+                                                        {item.name}
+                                                    </li>
+                                                ))}
+                                        </ul>
 
-      <MenubarMenu>
-        <MenubarTrigger>Marcas</MenubarTrigger>
-        <MenubarContent>
-          <MenubarCheckboxItem>Anastasia Beverly Hills</MenubarCheckboxItem>
-          <MenubarCheckboxItem>Biossance</MenubarCheckboxItem>
-          <MenubarCheckboxItem>Boticario</MenubarCheckboxItem>
-          <MenubarCheckboxItem>Carolina Herrera</MenubarCheckboxItem>
-          <MenubarCheckboxItem>Esthederm</MenubarCheckboxItem>
-          <MenubarCheckboxItem>Eudora</MenubarCheckboxItem>
-          <MenubarCheckboxItem>Fenty Beauty</MenubarCheckboxItem>
-          <MenubarCheckboxItem>Fenty Skin</MenubarCheckboxItem>
-          <MenubarCheckboxItem>Glow Recipe</MenubarCheckboxItem>
-          <MenubarCheckboxItem>Juliette has a Gun</MenubarCheckboxItem>
-          <MenubarCheckboxItem>Penhaligon's</MenubarCheckboxItem>
-          <MenubarCheckboxItem>Sephora</MenubarCheckboxItem>
-        </MenubarContent>
-      </MenubarMenu>
+                                        <p className="mt-5 hover:text-zinc-950 hover:font-bold">
+                                            Ver tudo +
+                                        </p>
+                                    </ListItem>
+                                ))}
+                            </ul>
+                        </NavigationMenuContent>
+                    </NavigationMenuItem>
 
-      <MenubarMenu>
-        <MenubarTrigger className="bg-white text-zinc-950">Login</MenubarTrigger>
-      </MenubarMenu>
-    </Menubar>
-  )
+                    <NavigationMenuItem>
+                        <NavigationMenuTrigger className="bg-zinc-950 text-white">Corpo & Banho</NavigationMenuTrigger>
+                        <NavigationMenuContent className="absolute left-0 mt-2">
+                            <ul className="flex gap-12 w-[500px] md:w-[890px] md:h-[380px] p-4 rounded-md shadow-lg bg-white">
+                                {body.map((bodyCategory) => (
+                                    <ListItem
+                                        key={bodyCategory.title}
+                                        title={bodyCategory.title}
+                                        href={bodyCategory.href}
+                                        className="!pl-0 !list-none w-[200px]"
+                                    >
+                                        <ul className="space-y-1">
+                                            {bodyCategory.items
+                                                .sort((bodyA, bodyB) => bodyA.name.localeCompare(bodyB.name))
+                                                .map((currBody) => (
+                                                    <li
+                                                        key={currBody.id}
+                                                        className="text-sm text-muted-foreground hover:text-zinc-900 hover:font-semibold cursor-pointer"
+                                                    >
+                                                        {currBody.name}
+                                                    </li>
+                                                ))}
+                                        </ul>
+
+                                        <p className="mt-5 hover:text-zinc-950 hover:font-bold">
+                                            Ver tudo +
+                                        </p>
+                                    </ListItem>
+                                ))}
+                            </ul>
+                        </NavigationMenuContent>
+                    </NavigationMenuItem>
+
+                    <NavigationMenuItem>
+                        <NavigationMenuTrigger className="bg-zinc-950 text-white">Maquiagem</NavigationMenuTrigger>
+                        <NavigationMenuContent className="absolute left-0 mt-2">
+                            <ul className="flex gap-12 w-[500px] md:w-[890px] md:h-[380px] p-4 rounded-md shadow-lg bg-white">
+                                {make.map((makeCategory) => (
+                                    <ListItem
+                                        key={makeCategory.title}
+                                        title={makeCategory.title}
+                                        href={makeCategory.href}
+                                        className="!pl-0 !list-none w-[200px]"
+                                    >
+                                        <ul className="space-y-1">
+                                            {makeCategory.items
+                                                .sort((makeA, makeB) => makeA.name.localeCompare(makeB.name))
+                                                .map((currMake) => (
+                                                    <li
+                                                        key={currMake.id}
+                                                        className="text-sm text-muted-foreground hover:text-zinc-900 hover:font-semibold cursor-pointer"
+                                                    >
+                                                        {currMake.name}
+                                                    </li>
+                                                ))}
+                                        </ul>
+
+                                        <p className="mt-5 hover:text-zinc-950 hover:font-bold">
+                                            Ver tudo +
+                                        </p>
+                                    </ListItem>
+                                ))}
+                            </ul>
+                        </NavigationMenuContent>
+                    </NavigationMenuItem>
+
+                    <NavigationMenuItem>
+                        <NavigationMenuTrigger className="bg-zinc-950 text-white">Skincare</NavigationMenuTrigger>
+                        <NavigationMenuContent className="absolute left-0 mt-2">
+                            <ul className="flex gap-12 w-[500px] md:w-[890px] md:h-[380px] p-4 rounded-md shadow-lg bg-white">
+                                {skincare.map((skinCategory) => (
+                                    <ListItem
+                                        key={skinCategory.title}
+                                        title={skinCategory.title}
+                                        href={skinCategory.href}
+                                        className="!pl-0 !list-none w-[200px]"
+                                    >
+                                        <ul className="space-y-1">
+                                            {skinCategory.items
+                                                .sort((skinA, skinB) => skinA.name.localeCompare(skinB.name))
+                                                .map((currSkin) => (
+                                                    <li
+                                                        key={currSkin.id}
+                                                        className="text-sm text-muted-foreground hover:text-zinc-900 hover:font-semibold cursor-pointer"
+                                                    >
+                                                        {currSkin.name}
+                                                    </li>
+                                                ))}
+                                        </ul>
+
+                                        <p className="mt-5 hover:text-zinc-950 hover:font-bold">
+                                            Ver tudo +
+                                        </p>
+                                    </ListItem>
+                                ))}
+                            </ul>
+                        </NavigationMenuContent>
+                    </NavigationMenuItem>
+                    
+                    <NavigationMenuItem>
+                        <NavigationMenuTrigger className="bg-zinc-950 text-white">Masculinos</NavigationMenuTrigger>
+                        <NavigationMenuContent className="absolute left-0 mt-2">
+                            <ul className="flex gap-12 w-[500px] md:w-[890px] md:h-[380px] p-4 rounded-md shadow-lg bg-white">
+                                {male.map((maleCategory) => (
+                                    <ListItem
+                                        key={maleCategory.title}
+                                        title={maleCategory.title}
+                                        href={maleCategory.href}
+                                        className="!pl-0 !list-none w-[200px]"
+                                    >
+                                        <ul className="space-y-1">
+                                            {maleCategory.items
+                                                .sort((maleA, maleB) => maleA.name.localeCompare(maleB.name))
+                                                .map((currMale) => (
+                                                    <li
+                                                        key={currMale.id}
+                                                        className="text-sm text-muted-foreground hover:text-zinc-900 hover:font-semibold cursor-pointer"
+                                                    >
+                                                        {currMale.name}
+                                                    </li>
+                                                ))}
+                                        </ul>
+
+                                        <p className="mt-5 hover:text-zinc-950 hover:font-bold">
+                                            Ver tudo +
+                                        </p>
+                                    </ListItem>
+                                ))}
+                            </ul>
+                        </NavigationMenuContent>
+                    </NavigationMenuItem>
+
+                    <NavigationMenuItem>
+                        <NavigationMenuTrigger className="bg-zinc-950 text-white">Presentes</NavigationMenuTrigger>
+                        <NavigationMenuContent className="absolute left-0 mt-2">
+                            <ul className="flex gap-12 w-[500px] md:w-[890px] md:h-[380px] p-4 rounded-md shadow-lg bg-white">
+                                {gift.map((giftCategory) => (
+                                    <ListItem
+                                        key={giftCategory.title}
+                                        title={giftCategory.title}
+                                        href={giftCategory.href}
+                                        className="!pl-0 !list-none w-[200px]"
+                                    >
+                                        <ul className="space-y-1">
+                                            {giftCategory.items
+                                                .map((currGift) => (
+                                                    <li
+                                                        key={currGift.id}
+                                                        className="text-sm text-muted-foreground hover:text-zinc-900 hover:font-semibold cursor-pointer"
+                                                    >
+                                                        {currGift.name}
+                                                    </li>
+                                                ))}
+                                        </ul>
+                                    </ListItem>
+                                ))}
+                            </ul>
+                        </NavigationMenuContent>
+                    </NavigationMenuItem>
+
+                </NavigationMenuList>
+            </NavigationMenu>
+        </div>
+    )
+}
+
+function ListItem({
+    title,
+    children,
+    href,
+    ...props
+}: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
+    return (
+        <li {...props}>
+            <NavigationMenuLink asChild>
+                <Link href={href}>
+                    <div className="text-md leading-none font-bold">{title}</div>
+                    <div className="mt-5 text-muted-foreground text-sm leading-snug">
+                        {children}
+                    </div>
+                </Link>
+            </NavigationMenuLink>
+        </li>
+    )
 }

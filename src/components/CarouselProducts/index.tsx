@@ -9,7 +9,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import Image from "next/image"
-import { ButtonCard } from "../ButtonCard"
+import ButtonCustom from "../ButtonCustom"
 
 const products = [
   {
@@ -62,7 +62,12 @@ export default function CarouselProducts() {
                       <span className="pl-2 font-bold">{currProduct.pricePromotion}</span>
                     </p>
 
-                    <ButtonCard />
+                    <ButtonCustom
+                      type="button"
+                      className="bg-zinc-950 text-zinc-100 hover:bg-zinc-950"
+                    >
+                      Comprar
+                    </ButtonCustom>
                   </div>
                 </CardContent>
               </Card>
