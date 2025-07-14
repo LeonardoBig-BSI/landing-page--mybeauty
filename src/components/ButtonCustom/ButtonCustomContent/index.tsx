@@ -3,7 +3,7 @@ import { ReactNode } from "react"
 
 interface ButtomCustomContentProps {
     type: 'submit' | 'button'
-    className: string;
+    className?: string;
     onClick?: () => void;
     children: ReactNode;
 }

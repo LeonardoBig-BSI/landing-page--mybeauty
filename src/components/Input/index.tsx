@@ -1,17 +1,8 @@
-import { text } from "stream/consumers";
 
-interface InputProps {
-    type: string;
-    className: string;
-    placeholder: string;
-}
+import InputContent from "./InputContent";
+import InputRoot from "./InputRoot";
 
-export default function Input({ type, className, placeholder }: InputProps) {
-    return (
-        <input
-          type={type}
-          className={className}
-          placeholder={placeholder}
-        />
-    )
+export const Input = {
+    Root: InputRoot,
+    Content: InputContent,
 }

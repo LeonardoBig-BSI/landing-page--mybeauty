@@ -27,6 +27,7 @@ export default function NotFound() {
         <ButtonCustom.Content
           type="button"
           className="bg-zinc-950 text-zinc-100 hover:bg-zinc-950"
+          onClick={handleNotFound}
         >
           Voltar
         </ButtonCustom.Content>

@@ -4,10 +4,7 @@ import { ReactNode } from "react";
 import { Header } from "..";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { NavBar } from "@/components/NavBar";
-
-// interface HeaderContentProps {
-//     isMobile: boolean;
-// }
+import HamburguerMenu from "@/components/HamburguerMenu";
 
 export default function HeaderContent() {
     const isMobile = useIsMobile();
@@ -15,6 +12,8 @@ export default function HeaderContent() {
     return isMobile ? (
         <div className="flex flex-col items-center justify-between gap-2 lg:[1024px]">
             <div className="flex flex-row items-center justify-between w-full md:w-auto">
+                <HamburguerMenu />                
+
                 <Header.Image
                     src="/mybeauty.jpeg"
                     alt="My Beauty"
@@ -31,8 +30,7 @@ export default function HeaderContent() {
         </div>
     ) : (
         <div className="flex flex-col items-center justify-between gap-2 lg:[1024px]">
-
-            <div className="flex flex-row items-center justify-between w-full md:w-auto">
+            <div className=" flex flex-row items-center justify-between w-full md:w-auto">
                 <Header.Image
                     src="/mybeauty.jpeg"
                     alt="My Beauty"
