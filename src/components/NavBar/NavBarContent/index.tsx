@@ -11,13 +11,13 @@ import {
     NavigationMenuViewport,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-import { fragrances } from "@/data/fragrances";
-import { hair } from "@/data/hair";
-import { body } from "@/data/body";
-import { make } from "@/data/make";
-import { skincare } from "@/data/skincare";
-import { male } from "@/data/male";
-import { gift } from "@/data/gift";
+import { fragrances } from "@/constants/fragrances";
+import { hair } from "@/constants/hair";
+import { body } from "@/constants/body";
+import { make } from "@/constants/make";
+import { skincare } from "@/constants/skincare";
+import { male } from "@/constants/male";
+import { gift } from "@/constants/gift";
 import Link from "next/link";
 
 export default function NavBarContent() {

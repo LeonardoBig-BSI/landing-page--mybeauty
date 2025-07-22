@@ -2,31 +2,25 @@ import { Check, ChevronsUpDown, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
 import { Popover } from "../ui/popover";
 import { useState } from "react";
-import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer";
-import { ButtonCustom } from "../ButtonCustom";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "../ui/command";
 import { PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 
-const teste = [
-  {
-    value: "backlog",
-    label: "Backlog",
-  },
-  {
-    value: "todo",
-    label: "Todo",
-  },
-  {
-    value: "in progress",
-    label: "In Progress",
-  },
-]
+import { fragrances } from "@/constants/fragrances";
+import { body } from "@/constants/body";
+import { gift } from "@/constants/gift";
+import { hair } from "@/constants/hair";
+import { make } from "@/constants/make";
+import { male } from "@/constants/male";
+import { skincare } from "@/constants/skincare";
 
 export default function HamburguerMenu() {
-  const [open, setOpen] = useState<boolean>(false);
-  const [value, setValue] = useState<string>("");
+  const [fragOpen, setFragOpen] = useState<boolean>(false);
+  const [fragSelected, setFragSelected] = useState<string>("");
+
+  // const [hairOpen, setHairOpen] = useState<boolean>(false);
+  // const [hairSelected, setHairSelected] = useState<string>("");
 
   return (
     <Sheet>
@@ -45,46 +39,51 @@ export default function HamburguerMenu() {
         </SheetHeader>
 
         {/* Perfumaria */}
-        <Popover open={open} onOpenChange={setOpen}>
+        <Popover open={fragOpen} onOpenChange={setFragOpen}>
           <PopoverTrigger className="mt-4" asChild>
             <Button
               variant="outline"
               role="combobox"
-              aria-expanded={open}
+              aria-expanded={fragOpen}
               className="w-[200px] justify-between"
             >
-              {value
-                ? teste.find((currT) => currT.value === value)?.label
+              {fragSelected
+                ? fragrances.flatMap(f => f.items).find(frag => frag.name === fragSelected)?.name
                 : "Perfumaria"
               }
 
               <ChevronsUpDown className="opacity-50" />
             </Button>
+
           </PopoverTrigger>
           <PopoverContent className="w-[200px] p-0">
             <Command>
-              <CommandInput placeholder="Search ..." className="h-9" />
+              <CommandInput placeholder="Pesquisar..." className="h-9" />
               <CommandList>
-                <CommandEmpty>No teste found.</CommandEmpty>
+                <CommandEmpty>Nenhum resultado encontrado.</CommandEmpty>
                 <CommandGroup>
-                  {teste.map((currT) => (
-                    <CommandItem
-                      key={currT.value}
-                      value={currT.value}
-                      onSelect={(currentValue) => {
-                        setValue(currentValue === value ? "" : currentValue)
-                        setOpen(false)
-                      }}
-                    >
-                      {currT.label}
+                  {fragrances.map((currFrag) =>
+                    currFrag.items.map((frag) => (
+                      <CommandItem
+                        key={frag.name}
+                        value={frag.name}
+                        onSelect={() => {
+                          setFragSelected(frag.name)
+                          setFragOpen(false)
+                        }}
+                      >
+
+                        {frag.name}
                       <Check
                         className={cn(
                           "ml-auto",
-                          value === currT.value ? "opacity-100" : "opacity-0"
+                          fragSelected === frag.name ? "opacity-100" : "opacity-0"
                         )}
                       />
-                    </CommandItem>
-                  ))}
+
+                      </CommandItem>
+                    ))
+                  )}
                 </CommandGroup>
               </CommandList>
             </Command>
