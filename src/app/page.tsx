@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { NavBar } from "@/components/NavBar";
+import { SectionCarouselProductsOffer } from "@/components/Sections/SectionCarousel/SectionCarouselProductsOffer";
 
 export default function Home() {
   return (
@@ -10,15 +11,15 @@ export default function Home() {
 
 
 
-      {/* <main className="container mb-32">
-        <SectionApresentation />
+      <main className="container mb-32">
+        {/* <SectionApresentation /> */}
 
-        <SectionCarousel />
+        <SectionCarouselProductsOffer />
 
-        <SectionMap />
+        {/* <SectionMap /> */}
       </main>
 
-      <Footer /> */}
+      {/* <Footer /> */}
     </>
   );
 }
