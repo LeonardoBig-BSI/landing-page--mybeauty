@@ -12,6 +12,7 @@ export const fragrances = [
             { id: "7", name: "Yves Saint Laurent" },
             { id: "8", name: "Polo Verde" },
             { id: "9", name: "Carolina Herrera" },
+            { id: "10", name: "Sephora" },
         ],
     },
 ];
