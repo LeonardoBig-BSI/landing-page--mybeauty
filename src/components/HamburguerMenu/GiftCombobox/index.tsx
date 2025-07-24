@@ -40,21 +40,23 @@ export const GiftCombobox = () => {
                         <CommandInput placeholder="Buscar marcas ou tipos..." />
                         <CommandEmpty>Nenhum resultado encontrado.</CommandEmpty>
 
-                        {gift.map((group) => (
-                            <CommandGroup
-                                key={group.title}
-                                heading={group.title}
-                            >
-                                {group.items.map((item) => (
-                                    <CommandItem
-                                        key={item.id}
-                                        onSelect={() => handleSelect(item.name)}
-                                    >
-                                        {item.name}
-                                    </CommandItem>
-                                ))}
-                            </CommandGroup>
-                        ))}
+                        <div className="max-h-[300px] overflow-y-auto">
+                            {gift.map((group) => (
+                                <CommandGroup
+                                    key={group.title}
+                                    heading={group.title}
+                                >
+                                    {group.items.map((item) => (
+                                        <CommandItem
+                                            key={item.id}
+                                            onSelect={() => handleSelect(item.name)}
+                                        >
+                                            {item.name}
+                                        </CommandItem>
+                                    ))}
+                                </CommandGroup>
+                            ))}
+                        </div>
                     </Command>
                 </PopoverContent>
             </Popover>
