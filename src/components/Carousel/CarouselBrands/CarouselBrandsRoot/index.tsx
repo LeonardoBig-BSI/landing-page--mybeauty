@@ -7,6 +7,8 @@ export const CarouselBrandsRoot = ({ children }: { children: ReactNode }) => {
             <Carousel
                 opts={{
                     align: "start",
+                    // dragFree: true,
+                    // skipSnaps: false,
                 }}
                 // className="w-full px-4 lg:max-w-5xl lg:mx-auto"
                 className="w-full max-w-full lg:max-w-5xl"
