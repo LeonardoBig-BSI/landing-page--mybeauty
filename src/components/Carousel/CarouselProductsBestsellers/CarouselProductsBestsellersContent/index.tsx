@@ -10,7 +10,7 @@ export const CarouselProductsBestsellersContent = () => {
         <>
             <CarouselContent>
                 {productsBestsellers.map((item, index) => (
-                    <CarouselItem key={index} className="basis-3/4 md:basis-1/2 lg:basis-1/3">
+                    <CarouselItem key={index} className="basis-3/4 md:basis-1/3 lg:basis-1/4">
                         <div className="p-2">
                             <Card className="h-[400px] w-full">
                                 <CardContent className="flex flex-col items-center justify-between p-4 h-full">
