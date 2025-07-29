@@ -1,5 +1,5 @@
 
-export default function SectionMap() {
+export const SectionMap = () => {
     return (
         <section className="mt-48 flex flex-col justify-center items-center gap-8">
             <h1 className="text-2xl md:text-3xl lg:text-3xl xl:text-3xl font-bold text-center">

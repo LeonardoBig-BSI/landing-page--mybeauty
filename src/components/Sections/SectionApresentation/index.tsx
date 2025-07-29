@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-export default function SectionApresentation() {
+export const SectionApresentation = () => {
   return (
     <section>
       <div className="mt-24 md:mt-72 lg:mt-72 xl:mt-72 flex flex-col justify-center items-center gap-8">

@@ -1,4 +1,4 @@
-import { CarouselBrands } from "@/components/Carousel/CarouselBrands"
+import { CarouselBrands } from "@/components/Carousel/CarouselBrands";
 
 export const SectionCarouselBrands = () => {
     return (
@@ -12,6 +12,8 @@ export const SectionCarouselBrands = () => {
                     <CarouselBrands.Root>
                         <CarouselBrands.Content />
                     </CarouselBrands.Root>
+
+                   
                 </div>
             </div>
         </section>
