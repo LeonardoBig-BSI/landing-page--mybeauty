@@ -35,11 +35,11 @@ export const GiftCombobox = () => {
                         <ChevronsUpDown className="opacity-50" />
                     </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-[300px] p-0">
+
+                <PopoverContent className="w-[300px] max-h-60 overflow-y-auto p-0">
                     <Command>
                         <CommandInput placeholder="Buscar marcas ou tipos..." />
                         <CommandEmpty>Nenhum resultado encontrado.</CommandEmpty>
-
 
                         {gift.map((group) => (
                             <CommandGroup
