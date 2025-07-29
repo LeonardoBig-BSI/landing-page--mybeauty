@@ -12,7 +12,7 @@ import { FraganceCombobox } from "./FraganceCombobox";
 import { HairCombobox } from "./HairCombobox";
 import { BodyCombobox } from "./BodyCombobox";
 import { MakeCombobox } from "./MakeCombobox";
-import { SkincareCombobox } from "./SkincareCombobox";
+import { TesteSkinCareCombobox } from "./SkincareCombobox";
 import { MaleCombobox } from "./MaleCombobox";
 import { GiftCombobox } from "./GiftCombobox";
 
@@ -25,7 +25,7 @@ export default function HamburguerMenu() {
           </button>
       </SheetTrigger>
 
-      <SheetContent side="left">
+      <SheetContent side="left" className="max-h-screen overflow-y-auto overflow-visible pb-6">
         <SheetHeader>
           <SheetTitle>Categorias</SheetTitle>
           <SheetDescription className="mb-8">
@@ -34,25 +34,25 @@ export default function HamburguerMenu() {
         </SheetHeader>
 
         {/* Perfumaria */}
-        <FraganceCombobox />
+        {/* <FraganceCombobox /> */}
 
         {/* Cabelos */}
-        <HairCombobox />
+        {/* <HairCombobox /> */}
 
         {/* Corpo & Banho */}
-        <BodyCombobox />
+        {/* <BodyCombobox /> */}
 
         {/* Maquiagem */}
-        <MakeCombobox />
+        {/* <MakeCombobox /> */}
         
         {/* Skincare */}
-        <SkincareCombobox />
+        <TesteSkinCareCombobox />
 
         {/* Masculinos */}
-        <MaleCombobox />
+        {/* <MaleCombobox /> */}
 
         {/* Presentes */}
-        <GiftCombobox />
+        {/* <GiftCombobox /> */}
 
       </SheetContent>
     </Sheet>
