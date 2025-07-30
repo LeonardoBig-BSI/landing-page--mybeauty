@@ -1,15 +1,15 @@
 import { useState } from "react"
 import { ChevronDown, ChevronUp } from "lucide-react";
 
-import { skincare } from "@/constants/skincare";
+import { fragrances } from "@/constants/fragrances";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-export const SkinCareDropbox = () => {
+export const FraganceDropbox = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [isOpenGroup, setIsOpenGroup] = useState<string | null>(null);
 
-    function handleOpenDropbox() {
+    function handleOpenCDropbox() {
         setIsOpen((prev) => !prev);
     }
 
@@ -18,9 +18,9 @@ export const SkinCareDropbox = () => {
             {/* Título */}
             <button
                 className="w-full flex justify-between items-center"
-                onClick={handleOpenDropbox}
+                onClick={handleOpenCDropbox}
             >
-                <span className="font-medium text-zinc-900">Skincare</span>
+                <span className="font-medium text-zinc-900">Perfumaria</span>
                 {isOpen ? (<ChevronUp color="#000" />)
                     :
                     (<ChevronDown color="#000" />)
@@ -35,7 +35,7 @@ export const SkinCareDropbox = () => {
             >
                 <div className="max-h-72 overflow-y-auto space-y-2">
                     {/* Subtítulos - Grupos */}
-                    {skincare.map((group) => (
+                    {fragrances.map((group) => (
                         <div key={group.title}>
                             <button
                                 className="mt-8 mb-8 w-full flex justify-between items-center p-2 bg-white border-b-2 border-b-zinc-400 rounded-md"
