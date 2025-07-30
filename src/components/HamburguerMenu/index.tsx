@@ -12,9 +12,9 @@ import { FraganceCombobox } from "./FraganceCombobox";
 import { HairCombobox } from "./HairCombobox";
 import { BodyCombobox } from "./BodyCombobox";
 import { MakeCombobox } from "./MakeCombobox";
-import { TesteSkinCareCombobox } from "./SkincareCombobox";
 import { MaleCombobox } from "./MaleCombobox";
 import { GiftCombobox } from "./GiftCombobox";
+import { SkinCareDropbox } from "./SkincareDropbox";
 
 export default function HamburguerMenu() {
   return (
@@ -46,7 +46,7 @@ export default function HamburguerMenu() {
         {/* <MakeCombobox /> */}
         
         {/* Skincare */}
-        <TesteSkinCareCombobox />
+        <SkinCareDropbox />
 
         {/* Masculinos */}
         {/* <MaleCombobox /> */}
